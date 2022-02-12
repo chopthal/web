@@ -1,14 +1,15 @@
 header {
   display: flex;
   margin: 0px;
-  padding: 15px;
-  font-size: 18pt;
+  padding: 0.2em;
+  font-size: 15pt;
   align-items: center;
   background-color: black;
   color:white;
 }
 
 .youtubeIcon {
+  height : 1.5em;
   color : red;
 }
 
@@ -17,17 +18,28 @@ header {
 }
 
 .searchForm {
-  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  margin-left: 0.3em;
 }
 
 .searchForm input{
-  height : 25px;
-  width : 300px;
+  height : 2em;
+  width: 20em;
+  flex-basis: 100%;
+  padding-left: 0.5em;
 }
 
 .searchForm button{
-  height : 31px;
-  width : 31px;
+  height : 2em;
+  margin-left: 0.1em;
   background-color: black;
   color:white;
+  padding : 0px;
+}
+
+.searchForm button img{
+  height : 100%;
+  width : 100%;
+
 }

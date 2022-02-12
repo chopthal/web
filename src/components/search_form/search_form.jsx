@@ -5,11 +5,12 @@ export default class SearchForm extends Component {
   render() {
     return (
       <header>
-        <span className = {styles.youtubeIcon}><i className= "fa-brands fa-youtube"></i></span>
-        <span className = {styles.title}>YOUTUBE</span>
-        <form className = {styles.searchForm} ref = {this.props.refSubmit} onSubmit={this.props.onSubmit}>
-          <input ref = {this.props.refInput} type="text" placeholder='Search..'/>
-          <button><i className="fa-solid fa-magnifying-glass"></i></button>
+        <img src="/images/logo.png" className = {styles.youtubeIcon}></img>
+        <span className = {styles.title}>Youtube</span>
+        <form className = {styles.searchForm} ref = {this.props.refSubmit} onSubmit={this.props.onSubmit} type="search">
+          <input ref = {this.props.refInput} type="search" placeholder='Search..'/>
+          <button type="search"><img src="/images/search.png" alt="" />
+          </button>
         </form>
       </header>
     )

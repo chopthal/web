@@ -8,36 +8,21 @@ export default class App extends Component {
     videos : [],
   };
 
-  componentDidMount() {
-
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-    
-    const requestVideoList = () => {
-      fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyDtZS50hamnv1YdPhccCs_aw7ukaCvYBzg&chart=mostPopular&maxResults=25&part=snippet", this.requestOptions)
-      .then(response => response.json())
-      .then(result => this.setState({videos : result.items}));
-    }
-
-    requestVideoList();
+  getVideos = (promise) => {
+    promise.then((videos)=> this.setState({videos}));
   }
 
-  refInput = React.createRef();
+  componentDidMount() {
+    const promise = this.props.youtube.requestVideoList();
+    this.getVideos(promise);
+  };
 
+  refInput = React.createRef();
   handleSubmit = (event) => {
     event.preventDefault();
-
-    const q = this.refInput.current.value;
-    const requestVideoList = () => {
-      fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyDl0n55pbK9hYpWnwruRgFeWaRkPzp405Q&q=${q}&maxResults=25&part=snippet`, this.requestOptions)
-      .then(response => response.json())
-      .then(result => this.setState({videos : result.items}));
-    }
-
-    requestVideoList();
-
+    const query = this.refInput.current.value;
+    const promise = this.props.youtube.requestSearchList(query);
+    this.getVideos(promise);
   }
   
   render() {
