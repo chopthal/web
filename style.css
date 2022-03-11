@@ -1,0 +1,18 @@
+.timing {
+    display: flex;
+    width : 100vw;
+}
+
+.parameters {
+    display: flex;
+    width : 100vw;
+    margin-top: 1em;
+}
+
+p {
+    margin-left: 1em;
+}
+
+input {
+    margin-left: 1em;   
+}

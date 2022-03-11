@@ -4,16 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style src="main.css"></style>  
-    
-    
+    <title>ODE Solver</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <script src="main.js" type="module" defer></script>
     <!-- <script src="main.js" defer></script> -->
     <h1 class="title"></h1>
-    <div id="tester" style="width:600px;height:250px;"></div>
+    <div id="tester"></div>
+    <section class="timing">
+        <p>Association Start : </p>
+        <input class="assoStart"readonly type="number" value="0">
+        <p>Dissociation Start : </p>
+        <input class="dissoStart"type="number" placeholder="180">
+        <p>Dissociation End : </p>
+        <input class="dissoEnd"type="number" placeholder="480">
+    </section>
+    <section class="parameters">
+        <p>Conc : </p>
+        <input class="conc"type="number" placeholder="1e-6">
+        <p>kon : </p>
+        <input class="kon"type="number" placeholder="1e4">
+        <p>koff : </p>
+        <input class="koff"type="number" placeholder="1e-2">
+        <p>Rmax : </p>
+        <input class="rmax"type="number" placeholder="3000">
+    </section>
+    <button class="updateBtn">Update</button>
     
 </body>
 </html>
