@@ -1,4 +1,4 @@
-# 1:1 binding kinetics Simulator (Langmuir's isothermal)
+# 1:1 binding kinetics Simulator (Langmuir isotherm)
 ## Algorithm
 ### Rate Equation
 #### d[LA]/dt = kon * [L] * [A] - koff * [LA]
