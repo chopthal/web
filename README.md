@@ -9,10 +9,10 @@
 
 ## Parameter
 ### Constant
-kon : association constant
-koff : dissociation constant
-Rmax : maximum binding signal at 100% activation of the ligand
-Conc : concentration of analyte solution
+- kon : association constant
+- koff : dissociation constant
+- Rmax : maximum binding signal at 100% activation of the ligand
+- Conc : concentration of analyte solution
 
 
 ## Reference
