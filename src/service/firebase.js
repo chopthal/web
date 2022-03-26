@@ -6,7 +6,8 @@ const firebaseConfig = {
   projectId: "icluebio-app-1b2bd",
   storageBucket: "icluebio-app-1b2bd.appspot.com",
   messagingSenderId: "537548537841",
-  appId: "1:537548537841:web:34ac732028dee97fface50"
+  appId: "1:537548537841:web:34ac732028dee97fface50",
 };
 
-export const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+export default firebaseApp;
