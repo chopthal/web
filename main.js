@@ -5,23 +5,90 @@ const updateBtn = document.querySelector(".updateBtn");
 const inputAssoStart = document.querySelector(".assoStart");
 const inputDissoStart = document.querySelector(".dissoStart");
 const inputDissoEnd = document.querySelector(".dissoEnd");
-const inputConc = document.querySelector(".conc");
-const inputKon = document.querySelector(".kon");
-const inputKoff = document.querySelector(".koff");
-const inputRmax = document.querySelector(".rmax");
+// const inputConc = document.querySelector(".conc");
+// const inputKon = document.querySelector(".kon");
+// const inputKoff = document.querySelector(".koff");
+// const inputRmax = document.querySelector(".rmax");
+const applyBtn = document.querySelector(".applyBtn");
+const inputSampleNum = document.querySelector(".sampleNum");
+const checkboxDilutionFactor = document.querySelector(".dilutionFactor");
 
 const NUMBER_OF_SYSTEMS = 3;
 const DELTA_T = 1;
 
+applyBtn.addEventListener("click", applyBtnClickEvent);
 updateBtn.addEventListener("click", updateBtnClickEvent);
-updateBtnClickEvent();
+// updateBtnClickEvent();
+
+function applyBtnClickEvent() {
+  const sampleNum = inputSampleNum.value || inputSampleNum.placeholder;
+  const isDilutionFactor = checkboxDilutionFactor.checked;
+
+  const parameter = document.createElement("section");
+  const concentration = document.createElement("input");
+  const kon = document.createElement("input");
+  const koff = document.createElement("input");
+  const rmax = document.createElement("input");
+  const inputTypeConc = document.createAttribute("type");
+  const inputTypeKon = document.createAttribute("type");
+  const inputTypeKoff = document.createAttribute("type");
+  const inputTypeRmax = document.createAttribute("type");
+  const textConc = document.createElement("p");
+  const textKon = document.createElement("p");
+  const textKoff = document.createElement("p");
+  const textRmax = document.createElement("p");
+  parameter.className = "parameter";
+  textConc.innerText = "Concentration (nM) :";
+  textKon.innerText = "kon :";
+  textKoff.innerText = "koff :";
+  textRmax.innerText = "Rmax :";
+  inputTypeConc.value = "number :";
+  inputTypeKon.value = "number :";
+  inputTypeKoff.value = "number :";
+  inputTypeRmax.value = "number :";
+  concentration.setAttributeNode(inputTypeConc);
+  concentration.placeholder = 1e-8;
+  kon.setAttributeNode(inputTypeKon);
+  kon.placeholder = 1e3;
+  koff.setAttributeNode(inputTypeKoff);
+  koff.placeholder = 1e-3;
+  rmax.setAttributeNode(inputTypeRmax);
+  rmax.placeholder = 100;
+  parameter.appendChild(textConc);
+  parameter.appendChild(concentration);
+  parameter.appendChild(textKon);
+  parameter.appendChild(kon);
+  parameter.appendChild(textKoff);
+  parameter.appendChild(koff);
+  parameter.appendChild(textRmax);
+  parameter.appendChild(rmax);
+
+  const parameters = document.querySelectorAll(".parameter");
+  parameters.forEach((event) => {
+    event.remove();
+  });
+
+  for (let i = 0; i < parseInt(sampleNum); i++) {
+    const idx = i + 1;
+    const sampleIndex = document.createElement("p");
+    sampleIndex.innerText = `Sample ${idx})`;
+    const clone = parameter.cloneNode(true);
+    clone.insertBefore(sampleIndex, clone.firstChild);
+    document.body.insertBefore(clone, updateBtn);
+  }
+}
 
 function updateBtnClickEvent() {
-  const axes = document.getElementById("axes");
+  const parameters = document.querySelectorAll(".parameter");
+  console.log(
+    parameters[0].children[2].value || parameters[0].children[2].placeholder
+  );
 
+  const axes = document.getElementById("axes");
   const assoStart = inputAssoStart.value || inputAssoStart.placeholder;
   const dissoStart = inputDissoStart.value || inputDissoStart.placeholder;
   const dissoEnd = inputDissoEnd.value || inputDissoEnd.placeholder;
+
   const conc = inputConc.value || inputConc.placeholder;
   const kon = inputKon.value || inputKon.placeholder;
   const koff = inputKoff.value || inputKoff.placeholder;

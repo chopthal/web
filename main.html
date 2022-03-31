@@ -20,15 +20,18 @@
       <p>Dissociation End :</p>
       <input class="dissoEnd" type="number" placeholder="480" />
     </section>
-    <section class="parameters">
-      <p>Conc :</p>
-      <input class="conc" type="number" placeholder="1e-6" />
-      <p>kon :</p>
-      <input class="kon" type="number" placeholder="1e4" />
-      <p>koff :</p>
-      <input class="koff" type="number" placeholder="1e-2" />
-      <p>Rmax :</p>
-      <input class="rmax" type="number" placeholder="3000" />
+    <section class="sample">
+      <p>Number of samples</p>
+      <input class="sampleNum" type="number" placeholder="1" />
+      <input
+        class="dilutionFactor"
+        type="checkbox"
+        name="Dilution factor"
+        id=""
+      />
+      <p>Dilution factor</p>
+      <input type="number" placeholder="2" />
+      <button class="applyBtn">Apply</button>
     </section>
     <button class="updateBtn">Update</button>
   </body>
