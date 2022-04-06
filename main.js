@@ -79,60 +79,62 @@ function applyBtnClickEvent() {
 }
 
 function updateBtnClickEvent() {
+  console.log("Update button clicked");
   const parameters = document.querySelectorAll(".parameter");
-  console.log(
-    parameters[0].children[2].value || parameters[0].children[2].placeholder
-  );
-
   const axes = document.getElementById("axes");
   const assoStart = inputAssoStart.value || inputAssoStart.placeholder;
   const dissoStart = inputDissoStart.value || inputDissoStart.placeholder;
   const dissoEnd = inputDissoEnd.value || inputDissoEnd.placeholder;
 
-  const conc = inputConc.value || inputConc.placeholder;
-  const kon = inputKon.value || inputKon.placeholder;
-  const koff = inputKoff.value || inputKoff.placeholder;
-  const rmax = inputRmax.value || inputRmax.placeholder;
+  let tMatTotal = new Array(parameters.length);
+  let resultTotal = new Array(parameters.length);
+  for (let i = 0; i < parameters.length; i++) {
+    const inputConc = parameters[i].children[2];
+    const inputKon = parameters[i].children[4];
+    const inputKoff = parameters[i].children[6];
+    const inputRmax = parameters[i].children[8];
+    const conc = inputConc.value || inputConc.placeholder;
+    const kon = inputKon.value || inputKon.placeholder;
+    const koff = inputKoff.value || inputKoff.placeholder;
+    const rmax = inputRmax.value || inputRmax.placeholder;
+    const timeSpanAsso = [parseInt(assoStart), parseInt(dissoStart - 1)];
+    const timeSpanDisso = [parseInt(dissoStart), parseInt(dissoEnd)];
+    const k = [parseFloat(kon), parseFloat(koff)];
 
-  const timeSpanAsso = [parseInt(assoStart), parseInt(dissoStart - 1)];
-  const timeSpanDisso = [parseInt(dissoStart), parseInt(dissoEnd)];
-  const k = [parseFloat(kon), parseFloat(koff)];
+    const y0Asso = [parseFloat(conc), parseFloat(rmax), 0];
+    if (y0Asso.length !== NUMBER_OF_SYSTEMS) {
+      console.log(`y0 asso length should be ${NUMBER_OF_SYSTEMS}`);
+    }
 
-  const y0Asso = [parseFloat(conc), parseFloat(rmax), 0];
-  if (y0Asso.length !== NUMBER_OF_SYSTEMS) {
-    console.log(`y0 asso length should be ${NUMBER_OF_SYSTEMS}`);
+    const odeResult = odeSolver(
+      NUMBER_OF_SYSTEMS,
+      y0Asso,
+      timeSpanAsso,
+      DELTA_T,
+      k
+    );
+
+    const tMat = odeResult.time;
+    const result = odeResult.result;
+
+    const y0Disso = [0, 0, result[2][result[2].length - 1]];
+    if (y0Disso.length !== NUMBER_OF_SYSTEMS) {
+      console.log(`y0 disso length should be ${NUMBER_OF_SYSTEMS}`);
+    }
+
+    const odeResult2 = odeSolver(
+      NUMBER_OF_SYSTEMS,
+      y0Disso,
+      timeSpanDisso,
+      DELTA_T,
+      k
+    );
+    const tMat2 = odeResult2.time;
+    const result2 = odeResult2.result;
+    tMatTotal[i] = tMat.concat(tMat2);
+    resultTotal[i] = result[2].concat(result2[2]);
   }
-
-  const odeResult = odeSolver(
-    NUMBER_OF_SYSTEMS,
-    y0Asso,
-    timeSpanAsso,
-    DELTA_T,
-    k
-  );
-
-  const tMat = odeResult.time;
-  const result = odeResult.result;
-
-  const y0Disso = [0, 0, result[2][result[2].length - 1]];
-  if (y0Disso.length !== NUMBER_OF_SYSTEMS) {
-    console.log(`y0 disso length should be ${NUMBER_OF_SYSTEMS}`);
-  }
-
-  const odeResult2 = odeSolver(
-    NUMBER_OF_SYSTEMS,
-    y0Disso,
-    timeSpanDisso,
-    DELTA_T,
-    k
-  );
-  const tMat2 = odeResult2.time;
-  const result2 = odeResult2.result;
-
-  const tMatTotal = tMat.concat(tMat2);
-  const resultTotal = result[2].concat(result2[2]);
   const plotTitle = "ODE-Solver";
-
   plotData(axes, tMatTotal, resultTotal, plotTitle);
 }
 
