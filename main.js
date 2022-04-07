@@ -5,20 +5,34 @@ const updateBtn = document.querySelector(".updateBtn");
 const inputAssoStart = document.querySelector(".assoStart");
 const inputDissoStart = document.querySelector(".dissoStart");
 const inputDissoEnd = document.querySelector(".dissoEnd");
-// const inputConc = document.querySelector(".conc");
-// const inputKon = document.querySelector(".kon");
-// const inputKoff = document.querySelector(".koff");
-// const inputRmax = document.querySelector(".rmax");
 const applyBtn = document.querySelector(".applyBtn");
 const inputSampleNum = document.querySelector(".sampleNum");
-const checkboxDilutionFactor = document.querySelector(".dilutionFactor");
+const checkboxDilutionFactor = document.querySelector(".DFCheck");
+const inputDilutionFactor = document.querySelector(".DFInput");
+const inputInitConc = document.querySelector(".initConcInput");
+const textInitConc = document.querySelector(".initConcText");
 
 const NUMBER_OF_SYSTEMS = 3;
 const DELTA_T = 1;
 
 applyBtn.addEventListener("click", applyBtnClickEvent);
 updateBtn.addEventListener("click", updateBtnClickEvent);
-// updateBtnClickEvent();
+checkboxDilutionFactor.addEventListener(
+  "change",
+  checkboxDilutionFactorChangeEvent
+);
+
+function checkboxDilutionFactorChangeEvent(event) {
+  if (!event.currentTarget.checked) {
+    inputDilutionFactor.classList.add("hidden");
+    inputInitConc.classList.add("hidden");
+    textInitConc.classList.add("hidden");
+  } else {
+    inputDilutionFactor.classList.remove("hidden");
+    inputInitConc.classList.remove("hidden");
+    textInitConc.classList.remove("hidden");
+  }
+}
 
 function applyBtnClickEvent() {
   const sampleNum = inputSampleNum.value || inputSampleNum.placeholder;
@@ -68,12 +82,23 @@ function applyBtnClickEvent() {
     event.remove();
   });
 
+  const initConc = inputInitConc.value || inputInitConc.placeholder;
+  const df = inputDilutionFactor.value || inputDilutionFactor.placeholder;
+
   for (let i = 0; i < parseInt(sampleNum); i++) {
     const idx = i + 1;
     const sampleIndex = document.createElement("p");
     sampleIndex.innerText = `Sample ${idx})`;
     const clone = parameter.cloneNode(true);
+    // TODO : addeventlistener to concentration
     clone.insertBefore(sampleIndex, clone.firstChild);
+    if (isDilutionFactor) {
+      const inputConc = clone.children[2];
+      inputConc.value = initConc;
+      if (i > 0) {
+        inputConc.value /= df * i;
+      }
+    }
     document.body.insertBefore(clone, updateBtn);
   }
 }

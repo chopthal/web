@@ -24,13 +24,16 @@
       <p>Number of samples</p>
       <input class="sampleNum" type="number" placeholder="1" />
       <input
-        class="dilutionFactor"
+        class="DFCheck"
         type="checkbox"
         name="Dilution factor"
         id=""
+        checked
       />
       <p>Dilution factor</p>
-      <input type="number" placeholder="2" />
+      <input class="DFInput" type="number" placeholder="2" />
+      <p class="initConcText">Initial concentration</p>
+      <input class="initConcInput" type="number" placeholder="1e-8" />
       <button class="applyBtn">Apply</button>
     </section>
     <button class="updateBtn">Update</button>
