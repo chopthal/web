@@ -1,9 +1,12 @@
 import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import useSampleStore from "./store/sampleStore";
 
 function App() {
   const [count, setCount] = useState(0);
+  const { sampleString, setSampleString, sampleNumber, increaseSampleNumber } =
+    useSampleStore();
 
   return (
     <div className="App">
@@ -11,6 +14,16 @@ function App() {
         <h1 className="text-main bg-sub text-3xl font-bold underline">
           Hello world!
         </h1>
+        <div>
+          <p
+            onClick={() => {
+              setSampleString("바뀜");
+            }}
+          >
+            Sample String: {sampleString}
+          </p>
+          <p onClick={increaseSampleNumber}>Sample Number: {sampleNumber}</p>
+        </div>
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
