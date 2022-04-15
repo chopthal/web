@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --main: #f95700;
+  --sub: #ffffff;
+}
+
+.text-main {
+  color: var(--main);
+}
+
+.text-sub {
+  color: var(--sub);
+}
+
+.bg-main {
+  background-color: var(--main);
+}
+
+.bg-sub {
+  background-color: var(--sub);
+}
+
+.border-main {
+  border-color: var(--main);
+}
+
+.border-sub {
+  border-color: var(--sub);
+}
