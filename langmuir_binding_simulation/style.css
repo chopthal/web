@@ -1,0 +1,28 @@
+.timing {
+  display: flex;
+  width: 100vw;
+}
+
+.sample {
+  display: flex;
+  width: 100vw;
+  margin-top: 1em;
+}
+
+.parameter {
+  display: flex;
+  width: 100vw;
+  margin-top: 1em;
+}
+
+.hidden {
+  display: none;
+}
+
+p {
+  margin-left: 1em;
+}
+
+input {
+  margin-left: 1em;
+}

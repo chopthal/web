@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ODE Solver</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="main.js" type="module" defer></script>
+    <!-- <script src="main.js" defer></script> -->
+    <h1 class="title"></h1>
+    <div id="axes"></div>
+    <section class="timing">
+      <p>Association Start :</p>
+      <input class="assoStart" readonly type="number" value="0" />
+      <p>Dissociation Start :</p>
+      <input class="dissoStart" type="number" placeholder="180" />
+      <p>Dissociation End :</p>
+      <input class="dissoEnd" type="number" placeholder="480" />
+    </section>
+    <section class="sample">
+      <p>Number of samples</p>
+      <input class="sampleNum" type="number" placeholder="1" />
+      <input
+        class="DFCheck"
+        type="checkbox"
+        name="Dilution factor"
+        id=""
+        checked
+      />
+      <p>Dilution factor</p>
+      <input class="DFInput" type="number" placeholder="2" />
+      <p class="initConcText">Initial concentration</p>
+      <input class="initConcInput" type="number" placeholder="1e-8" />
+      <button class="applyBtn">Apply</button>
+    </section>
+    <button class="updateBtn">Update</button>
+  </body>
+</html>
