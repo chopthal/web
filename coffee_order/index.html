@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Coffee Order</h1>
+    <form class="orderForm" action="">
+    <p>
+        <label for="orderer">Who are you?</label>
+        <select name="orderer" id="orderer" onchange="selectionChangeFunction(this.value)">
+            <option value="alex">Alex Jang</option>
+            <option value="whna">WH Na</option>
+            <option value="ghchae">GH Chae</option>
+            <option value="hylee">HY Lee</option>
+            <option value="custom">Other..</option>
+        </select>
+        <input class="hidden" type="text" placeholder="Your name" maxlength="10">
+    </p>
+    <input type="submit">
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
