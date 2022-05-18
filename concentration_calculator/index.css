@@ -1,0 +1,11 @@
+.molarity_calculator{
+    display: flex;    
+}
+
+.concentration_calculator{
+    display: flex;    
+}
+
+.divider {
+    margin-top : 3em;
+}

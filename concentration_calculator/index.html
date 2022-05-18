@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Calculator</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="molarity_calculator.js" defer></script>
+    <script src="concentration_calculator.js" defer></script>
+</head>
+<body>
+    <h1>Molarity and Concentration Calculators</h1>
+    <hr class="divider">
+    <h2>Molarity Calculator</h2>
+    <section class="molarity_calculator">
+        <div>
+            <label for="input_molar_mass">Mass</label>
+            <input class="input_molar_mass" type="text" id="input_molar_mass" placeholder="Mass">
+            <select class="select_molar_mass">
+                <option value="-12">picograms</option>
+                <option value="-9">nanograms</option>
+                <option value="-6">micrograms</option>
+                <option value="-3" selected>milligrams</option>
+                <option value="0">grams</option>
+                <option value="3">kilograms</option>
+            </select>
+        </div>
+        <span>＝</span>
+        <div>
+            <label for="input_molar_concentration">Concentration</label>
+            <input class="input_molar_concentration" type="text" id="input_molar_concentration" placeholder="Concentration">
+            <select class="select_molar_concentration">
+                <option value="-15">femtomolar</option>
+                <option value="-12">picomolar</option>
+                <option value="-9">nanomolar</option>
+                <option value="-6">micromolar</option>
+                <option value="-3" selected>millimolar</option>
+                <option value="0">molar</option>
+            </select>
+        </div>
+        <span>×</span>
+        <div>
+            <label for="input_molar_volume">Volume</label>
+            <input class="input_molar_volume" type="text" id="input_molar_volume" placeholder="Volume">
+            <select class="select_molar_volume">
+                <option value="-9">nanoliter</option>
+                <option value="-6">microliter</option>
+                <option value="-3" selected>milliliter</option>
+                <option value="0">liter</option>
+            </select>
+        </div>
+        <span>×</span>
+        <div>
+            <label for="input_molar_molecular_weight">Molecular weight*</label>
+            <input class="input_molar_molecular_weight" type="text" id="input_molar_molecular_weight" placeholder="Molecular weight">
+            <span>g/mol</span>
+        </div>
+        <button class="button_molar_calculate">Calculate</button>
+    </section>
+    <hr class="divider">
+    <h2>Concentration Calculator</h2>
+    <section class="concentration_calculator">
+        <div>
+            <label for="input_conc_volume">Volume</label>
+            <input class="input_conc_volume" type="text" id="input_conc_volume" placeholder="Volume">
+            <select class="select_conc_volume">
+                <option value="-3">ml</option>
+                <option value="-6">ul</option>
+            </select>
+        </div>
+        <span>＝</span>
+        <div>
+            <label for="input_conc_mass">Mass</label>
+            <input class="input_conc_mass" type="text" id="input_conc_mass" placeholder="Mass">
+            <select class="select_conc_mass">
+                <option value="-3">mg</option>
+                <option value="-6">ug</option>
+                <option value="-9">ng</option>
+            </select>
+        </div>
+        <span>÷</span>
+        <div>
+            <label for="input_conc_concentration">Concentration</label>
+            <input class="input_conc_concentration" type="text" id="input_conc_concentration" placeholder="Concentration">
+            <select class="select_conc_concentration">
+                <option value="0">mg/ml</option>
+                <option value="-3">ug/ml</option>
+                <option value="-6">ng/ml</option>
+            </select>
+        </div>
+        <button class="button_conc_calculate">Calculate</button>
+    </section>
+</body>
+</html>
