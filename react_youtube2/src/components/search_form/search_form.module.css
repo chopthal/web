@@ -1,0 +1,45 @@
+header {
+  display: flex;
+  margin: 0px;
+  padding: 0.2em;
+  font-size: 15pt;
+  align-items: center;
+  background-color: black;
+  color:white;
+}
+
+.youtubeIcon {
+  height : 1.5em;
+  color : red;
+}
+
+.title {
+  margin-left : 5px;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  margin-left: 0.3em;
+}
+
+.searchForm input{
+  height : 2em;
+  width: 20em;
+  flex-basis: 100%;
+  padding-left: 0.5em;
+}
+
+.searchForm button{
+  height : 2em;
+  margin-left: 0.1em;
+  background-color: black;
+  color:white;
+  padding : 0px;
+}
+
+.searchForm button img{
+  height : 100%;
+  width : 100%;
+
+}
